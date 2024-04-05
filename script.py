@@ -15,10 +15,30 @@ def shuffleArray(nums):
     random.shuffle(shuffledTwice)
     return shuffledOnce + shuffledTwice
 
-NUMBER_OF_TICKETS = 75
+NUMBER_OF_TICKETS = 20
 myFont = ImageFont.truetype('font.ttf', 60)
 
-drawDestQuarter = [(669,262),(847,358),(1039,247),(145,592),(345,705),(565,632),(849,829),(798,1016),(1048,958),(497,1346),(96,1602),(464,1598),(895,1290),(778,1431),(1054,1550)]
+# Coordinates of the first ticket where numbers need to be printed. 
+# Note - my code will automatically fill the rest of the 3 tickets 
+# based on locations on the first ticket of the image that has 4 tickets in one
+drawDestQuarter = [
+        (669,262),
+        (847,358),
+        (1039,247),
+        (145,592),
+        (345,705),
+        (565,632),
+        (849,829),
+        (798,1016),
+        (1048,958),
+        (497,1346),
+        (96,1602),
+        (464,1598),
+        (895,1290),
+        (778,1431),
+        (1054,1550)
+    ]
+
 drawDestList = []
 
 # I am writing these values as I have a A4 Sheet (2480 x 3508) split into 4 quaters for 4 tickets each page
@@ -45,13 +65,14 @@ for i in range(4):
 # to get the desired number of tickets
 ITERATIONS = NUMBER_OF_TICKETS / 12
 ITERATIONS += 1
+ITERATIONS = int(ITERATIONS)
 
 # Creating the initial array of 90 numbers
 nums = []
 for i in range(90):
     nums.append(i + 1)
 
-for k in range(int(ITERATIONS)):
+for k in range(ITERATIONS):
     meganums = shuffleArray(nums)
     img = Image.open("sample.png")
     for i in range(180):
